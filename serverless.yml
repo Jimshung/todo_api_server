@@ -1,8 +1,13 @@
 service: sls
 
+plugins:
+  - serverless-offline
+
 custom:
   settings:
     POSTS_TABLE: posts
+  serverless-offline:
+    httpPort: 5566
 
 provider:
   name: aws

@@ -1,7 +1,7 @@
 'use strict';
 const AWS = require('aws-sdk');
 const db = new AWS.DynamoDB.DocumentClient({ apiVersion: '2012-08-10' });
-const uuid = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 
 const postsTable = process.env.POSTS_TABLE;
 // Create a response
@@ -35,7 +35,7 @@ module.exports.createPost = (event, context, callback) => {
   }
 
   const post = {
-    id: uuid(),
+    id: uuidv4(),
     createdAt: new Date().toISOString(),
     userId: 1,
     title: reqBody.title,
